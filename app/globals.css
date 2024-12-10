@@ -6,12 +6,6 @@ body {
   font-family: "Inter", sans-serif;
 }
 
-:root {
-  --radius: 8px;
-  --background: white;
-  --foreground: black;
-}
-
 @layer utilities {
   .background-light850_dark100 {
     @apply bg-light-850 dark:bg-dark-100;
@@ -294,6 +288,14 @@ body {
       rgba(23, 28, 35, 0.41) 0%,
       rgba(19, 22, 28, 0.7) 100%
     );
+  }
+  .scrollbar-none {
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For IE and Edge */
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Edge */
   }
 }
 
