@@ -25,7 +25,7 @@ const popularTags = [
 const RightSidebar = () => {
   return (
     <>
-      <section className="background-light900_dark200 scrollbar-none sticky right-0 top-0 z-40 flex h-screen w-[350px] flex-col gap-14 overflow-y-auto px-6 pb-6 pt-36 shadow-light-300 dark:shadow-none max-lg:hidden">
+      <section className="background-light900_dark200 scrollbar-none sticky right-0 top-0 z-40 flex h-screen w-[350px] flex-col gap-14 overflow-y-auto px-6 pb-6 pt-36 shadow-light-300 dark:shadow-none max-lg:hidden ">
         <div className="flex flex-col">
           <h3 className="h3-bold text-dark200_light900">Top Question</h3>
           <div className="mt-7 flex flex-col gap-[30px]">
@@ -42,6 +42,7 @@ const RightSidebar = () => {
                   width={20}
                   height={20}
                   alt="chevron right"
+                  className="invert-colors"
                 />
               </Link>
             ))}
