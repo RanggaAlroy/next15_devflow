@@ -12,7 +12,7 @@ import NavLinks from "./navbar/NavLinks";
 const LeftSidebar = () => {
   return (
     <>
-      <section className="background-light900_dark200 scrollbar-none sticky left-0 top-0 z-40 flex h-screen flex-col justify-between gap-6 overflow-y-auto px-6 pt-36 dark:shadow-none max-sm:hidden">
+      <section className="background-light900_dark200 scrollbar-none sticky left-0 top-0 z-40 flex h-screen flex-col justify-between gap-6 overflow-y-auto px-6 pt-36 shadow-light-300 dark:shadow-none max-sm:hidden">
         <div className="flex flex-col gap-6">
           <NavLinks />
         </div>
