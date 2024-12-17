@@ -27,29 +27,38 @@ const LocalSearch = ({ route, placeholder, imgSrc, otherClasses }: Props) => {
     const delayDebounceFn = setTimeout(() => {
       if (searchQuery) {
         const newUrl = formUrlQuery({
-          params: window.location.pathname,
+          params: searchParams.toString(),
           key: "query",
           value: searchQuery,
         });
+
         router.push(newUrl, { scroll: false });
       } else {
         if (pathname === route) {
           const newUrl = removeKeysFromQuery({
-            params: window.location.pathname,
+            params: searchParams.toString(),
             keysToRemove: ["query"],
           });
+
           router.push(newUrl, { scroll: false });
         }
       }
-    }, 500);
+    }, 300);
+
     return () => clearTimeout(delayDebounceFn);
-  }, [searchQuery, router, searchParams, route, pathname]);
+  }, [searchQuery, router, route, searchParams, pathname]);
 
   return (
     <div
       className={`background-light800_darkgradient flex min-h-[56px] grow items-center gap-1 rounded-[10px] px-4 ${otherClasses}`}
     >
-      <Image src={imgSrc} width={24} height={24} alt="search icon" />
+      <Image
+        src={imgSrc}
+        width={24}
+        height={24}
+        alt="search icon"
+        className="cursor-pointer"
+      />
       <Input
         type="text"
         placeholder={placeholder}
