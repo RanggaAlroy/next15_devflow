@@ -1,5 +1,5 @@
 
-interface Tag {
+interface Tags {
     _id: string;
     name: string;
 }
@@ -16,6 +16,6 @@ interface Question {
     answers: number;
     views: number;
     upvotes: number;
-    createdAt: string;
+    createdAt: Date;
     author: Author;
 }
