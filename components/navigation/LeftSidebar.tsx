@@ -13,7 +13,7 @@ const LeftSidebar = () => {
   return (
     <>
       <section className="background-light900_dark200 scrollbar-none sticky left-0 top-0 z-40 flex h-screen flex-col justify-between gap-6 overflow-y-auto px-6 pt-36 shadow-light-300 dark:shadow-none max-sm:hidden">
-        <div className="flex flex-col gap-6">
+        <div className="3xl:gap-6 flex flex-col gap-4">
           <NavLinks />
         </div>
         <div className="mt-auto flex flex-col gap-6 pb-6">
