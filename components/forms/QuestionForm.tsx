@@ -1,8 +1,10 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { MDXEditorMethods } from "@mdxeditor/editor";
+import dynamic from "next/dynamic";
+import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -17,7 +19,13 @@ import {
 import { Input } from "@/components/ui/input";
 import { AskQuestionSchema } from "@/lib/validation";
 
+const Editor = dynamic(() => import("../editor"), {
+  ssr: false,
+});
+
 const QuestionForm = () => {
+  const editorRef = useRef<MDXEditorMethods>(null);
+
   const form = useForm({
     resolver: zodResolver(AskQuestionSchema),
     defaultValues: {
@@ -68,10 +76,10 @@ const QuestionForm = () => {
                 <span className="text-primary-500">*</span>
               </FormLabel>
               <FormControl>
-                <Input
-                  placeholder="Editor"
-                  className="paragraph-regular background-light700_dark300 light-border-2 text-dark300_light700 no-focus min-h-[56px] border"
-                  {...field}
+                <Editor
+                  value={field.value}
+                  fieldChange={field.onChange}
+                  editorRef={editorRef}
                 />
               </FormControl>
               <FormDescription className="body-regular mt-2.5 text-light-500">
