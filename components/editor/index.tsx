@@ -1,7 +1,5 @@
 "use client";
 
-import "@mdxeditor/editor/style.css";
-
 import {
   headingsPlugin,
   listsPlugin,
@@ -10,30 +8,32 @@ import {
   markdownShortcutPlugin,
   MDXEditor,
   type MDXEditorMethods,
-  toolbarPlugin,
   ConditionalContents,
   ChangeCodeMirrorLanguage,
+  toolbarPlugin,
   UndoRedo,
+  Separator,
   BoldItalicUnderlineToggles,
+  ListsToggle,
   CreateLink,
   InsertImage,
   InsertTable,
-  ListsToggle,
-  InsertCodeBlock,
   InsertThematicBreak,
-  Separator,
-  diffSourcePlugin,
+  InsertCodeBlock,
+  linkPlugin,
+  linkDialogPlugin,
+  tablePlugin,
+  imagePlugin,
   codeBlockPlugin,
   codeMirrorPlugin,
-  imagePlugin,
-  linkDialogPlugin,
-  linkPlugin,
-  tablePlugin,
+  diffSourcePlugin,
 } from "@mdxeditor/editor";
-import "./dark-editor.css";
 import { basicDark } from "cm6-theme-basic-dark";
 import { useTheme } from "next-themes";
-import React, { ForwardedRef } from "react";
+import type { ForwardedRef } from "react";
+
+import "@mdxeditor/editor/style.css";
+import "./dark-editor.css";
 
 interface Props {
   value: string;
@@ -41,18 +41,18 @@ interface Props {
   editorRef: ForwardedRef<MDXEditorMethods> | null;
 }
 
-const Editor = ({ value, fieldChange, editorRef, ...props }: Props) => {
+const Editor = ({ value, editorRef, fieldChange, ...props }: Props) => {
   const { resolvedTheme } = useTheme();
+
   const theme = resolvedTheme === "dark" ? [basicDark] : [];
 
   return (
     <MDXEditor
       key={resolvedTheme}
-      placeholder="Start typing here..."
       markdown={value}
       ref={editorRef}
+      className="background-light800_dark200 light-border-2 markdown-editor dark-editor w-full border"
       onChange={fieldChange}
-      className="background-light800_dark200 light-border-2 markdown-editor dark-editor size-full border"
       plugins={[
         headingsPlugin(),
         listsPlugin(),
