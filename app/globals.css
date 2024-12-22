@@ -279,7 +279,7 @@ body {
   }
 
   .mdx-toolbar {
-    @apply flex flex-wrap gap-1; /* Makes the toolbar wrap and adds spacing */
+    @apply flex flex-wrap gap-1;
   }
 
   .tab {
