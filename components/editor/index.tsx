@@ -94,7 +94,7 @@ const Editor = ({ value, editorRef, fieldChange, ...props }: Props) => {
                 },
                 {
                   fallback: () => (
-                    <>
+                    <div className="flex flex-wrap gap-1">
                       <UndoRedo />
                       <Separator />
 
@@ -112,7 +112,7 @@ const Editor = ({ value, editorRef, fieldChange, ...props }: Props) => {
                       <InsertThematicBreak />
 
                       <InsertCodeBlock />
-                    </>
+                    </div>
                   ),
                 },
               ]}
