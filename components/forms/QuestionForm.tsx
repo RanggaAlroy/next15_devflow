@@ -10,6 +10,7 @@ import { z } from "zod";
 
 import { AskQuestionSchema } from "@/lib/validation";
 
+import TagCard from "../cards/TagCard";
 import { Button } from "../ui/button";
 import {
   Form,
@@ -61,6 +62,17 @@ const QuestionForm = () => {
           message: "Tag already exists",
         });
       }
+    }
+  };
+
+  const handleRemoveTag = (tag: string, field: { value: string[] }) => {
+    const newTags = field.value.filter((t) => t !== tag);
+    form.setValue("tags", newTags);
+    if (newTags.length === 0) {
+      form.setError("tags", {
+        type: "manual",
+        message: "At least one tag is required",
+      });
     }
   };
 
@@ -135,7 +147,17 @@ const QuestionForm = () => {
                   />
                   {field.value.length > 0 && (
                     <div className="flex-start mt-2.5 flex-wrap gap-2.5">
-                      {field.value.map((tag: string) => `${tag} `)}
+                      {field.value.map((tag: string) => (
+                        <TagCard
+                          key={tag}
+                          name={tag}
+                          _id={tag}
+                          compact
+                          remove
+                          isButton
+                          handleRemove={() => handleRemoveTag(tag, field)}
+                        />
+                      ))}
                     </div>
                   )}
                 </div>
