@@ -12,7 +12,7 @@ interface IUser {
 }
 
 
-const UseSchema = new Schema(
+const UserSchema = new Schema<IUser>(
     {
         name: { type: String, required: true },
         username: { type: String, required: true },
@@ -28,6 +28,6 @@ const UseSchema = new Schema(
     }
 )
 
-const User = models?.user || model<IUser>("user", UseSchema);
+const User = models?.user || model<IUser>("user", UserSchema);
 
 export default User
