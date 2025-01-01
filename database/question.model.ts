@@ -1,9 +1,9 @@
 import { model, models, Schema, Types } from "mongoose";
 
-interface IQuestion {
+export interface IQuestion {
     title: string;
     content: string;
-    tags: string[];
+    tags: Types.ObjectId[];
     views: number;
     answers: number;
     upvotes: number;
@@ -15,7 +15,7 @@ const QuestionSchema = new Schema<IQuestion>(
     {
         title: { type: String, required: true },
         content: { type: String, required: true },
-        tags: { type: [String], required: true },
+        tags: [{ type: Schema.Types.ObjectId, ref: "Tag" }],
         views: { type: Number, default: 0 },
         answers: { type: Number, default: 0 },
         upvotes: { type: Number, default: 0 },
