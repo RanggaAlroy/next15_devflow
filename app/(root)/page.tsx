@@ -46,6 +46,7 @@ const questions = [
     createdAt: new Date("1997-01-01"),
   },
 ];
+
 interface SearchParams {
   searchParams: Promise<{ [key: string]: string }>;
 }
