@@ -4,7 +4,7 @@ import User from "@/database/user.model";
 import handleError from "@/lib/handlers/error";
 import { ValidationError } from "@/lib/http-error";
 import dbConnect from "@/lib/mongoose";
-import { UsherSchema } from "@/lib/validation";
+import { UserSchema } from "@/lib/validation";
 import { APIErrorResponse } from "@/types/global";
 
 
@@ -28,7 +28,7 @@ export async function GET() {
       await dbConnect();
       const body = await request.json();
 
-      const validatedData = UsherSchema.safeParse(body);
+      const validatedData = UserSchema.safeParse(body);
 
       if (!validatedData.success) {
         throw new ValidationError(validatedData.error.flatten().fieldErrors);

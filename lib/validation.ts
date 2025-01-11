@@ -49,7 +49,7 @@ export const AskQuestionSchema = z.object({
     
 })
 
-export const UsherSchema = z.object({
+export const UserSchema = z.object({
     name: z.string().min(1, { message: "Name is required" }),
     username: z.string().min(3, { message: "Username must be at least 3 characters long" }),
     email: z.string().email({ message: "Please provide a valid email address" }),
