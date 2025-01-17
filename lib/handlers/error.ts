@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
+
 import { RequestError, ValidationError } from "../http-error";
 import logger from "../logger";
 
@@ -10,10 +11,10 @@ const formatResponse = (
   responseType: ResponseType,
   status: number,
   message: string,
-  errors?: Record<string, string[]>
+  errors?: Record<string, string[]> | undefined
 ) => {
   const responseContent = {
-    success: false, // Fixed typo here
+    success: false,
     error: {
       message,
       details: errors,
