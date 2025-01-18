@@ -92,6 +92,7 @@ const AuthForm = <T extends FieldValues>({
                 <FormControl>
                   <Input
                     required
+                    type={field.name === "password" ? "password" : "text"}
                     placeholder={
                       field.name === "password" ? "password" : field.name
                     }
